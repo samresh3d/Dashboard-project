@@ -37,40 +37,13 @@
         :edit="updateDataForTaskEditor"
       />
     </div>
-    <!-- <b-container
-      mb="6"
-      class="fixed-bottom edit-task border rounded p-3 m-auto"
-      :class="{ invisible: !isEditorOpen }"
-    >
-      <b-button variant="light" class="float-right close-button" @click="hideEditor"
-        ><b-icon icon="x"></b-icon
-      ></b-button>
-      <div class="task mb-3 mt-2">
-        <h4>Task</h4>
-        <b-form-textarea
-          ref="inputTask"
-          class="mb-2"
-          v-model="updatedTask"
-          placeholder="Edit Task... ⏎"
-          @keyup.enter="updateTask"
-        ></b-form-textarea>
-      </div>
-      <div class="description mb-3 mt-2">
-        <h4>Description</h4>
-        <b-form-textarea
-          ref="inputDesc"
-          class="mb-2"
-          v-model="updatedDescription"
-          placeholder="Edit Description... ⏎"
-          @keyup.enter="updateTask"
-        ></b-form-textarea>
-      </div>
-      <b-button variant="primary" @click="updateTask">Save</b-button>
-    </b-container> -->
-  
-  
-  
-  <TaskEditor :updateData="updateTask" :editorOpen="isEditorOpen" :description="updatedDescription" :task="updatedTask" :hideBox ="hideEditor" />
+    <TaskEditor
+      :updateData="updateTask"
+      :editorOpen="isEditorOpen"
+      :description="updatedDescription"
+      :task="updatedTask"
+      :hideBox="hideEditor"
+    />
   </div>
 </template>
 
@@ -80,6 +53,9 @@ import TaskEditor from "./components/TaskEditor.vue";
 
 export default {
   name: "App",
+  created() {
+    document.title = "Trello dashboard Task || Samresh Pathak";
+  },
   components: {
     TaskBoardColumn,
     TaskEditor,
@@ -112,6 +88,8 @@ export default {
           task: "Cras ornare tristique elit.",
           description: "This is firming  description",
         },
+      ],
+      tasksArray: [
         {
           task: "Vivamus vestibulum ntulla nec ante.",
           description: "This is description",
@@ -124,19 +102,29 @@ export default {
           task: "Integer vitae libero ac risus egestas placerat.",
           description: "This is three description",
         },
+      ],
+      inProgressArray: [
+        {
+          task: "Nunc dignissim risus id metus.",
+          description: "This is water description",
+        },
+        {
+          task: "Cras ornare tristique elit.",
+          description: "This is firming  description",
+        },
+      ],
+      inReviewArray: [
         {
           task: "Vestibulum commodo felis quis tortor.",
           description: "This is water description",
         },
+      ],
+      completedArray: [
         {
           task: "Ut aliquam sollicitudin leod",
           description: "This is firming  description",
         },
       ],
-      tasksArray: [],
-      inProgressArray: [],
-      inReviewArray: [],
-      completedArray: [],
     };
   },
   methods: {
@@ -153,25 +141,19 @@ export default {
       this.updatedTask = this.selectedElement.task;
     },
     updateTask(updatedDescription, updatedTask) {
-      console.log(`${updatedDescription}\n${updatedTask}`)
+      console.log(`${updatedDescription}\n${updatedTask}`);
       this.isEditorOpen = false;
       this.selectedElement.description = updatedDescription;
       this.selectedElement.task = updatedTask;
     },
     hideEditor() {
-       this.isEditorOpen = false;
+      this.isEditorOpen = false;
     },
   },
 };
 </script>
 
 <style>
-.edit-task {
-  background: #f2f3f6;
-}
-.btn-light {
-  background-color: transparent;
-}
 .full-height {
   height: 100%;
 }

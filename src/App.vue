@@ -1,5 +1,8 @@
 <template>
-  <div class="horizontal-scrollable full-height m-5">
+
+  <div >
+    <NavigationBar />
+    <div class="horizontal-scrollable full-height m-5">
     <div class="row">
       <TaskBoardColumn
         heading="Project Overview"
@@ -45,11 +48,15 @@
       :hideBox="hideEditor"
     />
   </div>
+      <FooterSection />
+  </div>
 </template>
 
 <script>
 import TaskBoardColumn from "./components/TaskBoardColumn.vue";
 import TaskEditor from "./components/TaskEditor.vue";
+import NavigationBar from "./components/NavigationBar.vue";
+import FooterSection from "./components/FooterSection.vue";
 
 export default {
   name: "App",
@@ -59,6 +66,8 @@ export default {
   components: {
     TaskBoardColumn,
     TaskEditor,
+    NavigationBar,
+    FooterSection,
   },
   data() {
     return {
@@ -155,7 +164,7 @@ export default {
 
 <style>
 .full-height {
-  height: 100%;
+  min-height: 70vh;
 }
 .horizontal-scrollable > .row {
   overflow-x: auto;

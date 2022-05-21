@@ -8,16 +8,15 @@
         group="tasks"
       >
         <div
-          class="list-group-item"
+          class="list-group-item d-flex justify-content-between text-wrap"
           v-for="element in initialArray"
           :key="element.task"
         >
-          {{ element.task }}
+          <span>{{ element.task }}</span> <b-button class="ml-2 btn btn-light" type="button" varient="primary" @click="add"><b-icon icon="pencil"></b-icon></b-button>
         </div>
       </draggable>
-      <div class="form-inline">
-        <b-form-input v-model="newTask" placeholder="Enter new Task" @keyup.enter="add"></b-form-input>
-        <b-button class="ml-2" varient="primary" @click="add">Add Task</b-button>
+      <div class="form-inline add-task-input-wrapper ">
+        <b-form-input v-model="newTask" placeholder="Add Task... ⏎" @keyup.enter="add"></b-form-input>
       </div>
     </div>
   </div>
@@ -58,5 +57,10 @@ export default {
 .kanban-column {
   min-height: 200px;
   min-width: 200px;
+    max-width: 350px;
+}
+
+.form-inline .form-control{
+  width: 100% !important;
 }
 </style>

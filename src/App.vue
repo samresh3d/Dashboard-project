@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid horizontal-scrollable m-5">
+  <div class=" horizontal-scrollable  full-height m-5">
     <div class="row">
       <TaskBoardColumn
         heading="Project Overview"
@@ -47,19 +47,43 @@ export default {
     return {
       newTask: "",
       projectOverviewArray: [
-        { task: "do one thing", description: "This is description" },
-        { task: "do two thing", description: "This is two description" },
-        { task: "do three thing", description: "This is three description" },
-        { task: "do water thing", description: "This is water description" },
-        { task: "do firming", description: "This is firming  description" },
-        { task: "do s thing", description: "This is description" },
-        { task: "do ds thing", description: "This is two description" },
         {
-          task: "do tdsdshree thing",
+          task: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+          description: "This is description",
+        },
+        {
+          task: "Aliquam tincidunt mauris eu risus.",
+          description: "This is two description",
+        },
+        {
+          task: "Vestibulum auctor dapibus neque",
           description: "This is three description",
         },
-        { task: "do wadsdter thing", description: "This is water description" },
-        { task: "do dsd", description: "This is firming  description" },
+        {
+          task: "Nunc dignissim risus id metus.",
+          description: "This is water description",
+        },
+        {
+          task: "Cras ornare tristique elit.",
+          description: "This is firming  description",
+        },
+        {
+          task: "Vivamus vestibulum ntulla nec ante.",
+          description: "This is description",
+        },
+        {
+          task: "Fusce pellentesque suscipit nibh.",
+          description: "This is two description",
+        },
+        {
+          task: "Integer vitae libero ac risus egestas placerat.",
+          description: "This is three description",
+        },
+        {
+          task: "Vestibulum commodo felis quis tortor.",
+          description: "This is water description",
+        },
+        { task: "Ut aliquam sollicitudin leod", description: "This is firming  description" },
       ],
       tasksArray: [],
       inProgressArray: [],
@@ -79,15 +103,17 @@ export default {
 </script>
 
 <style>
+.full-height{
+  height: 100%;
+}
 .horizontal-scrollable > .row {
   overflow-x: auto;
   white-space: nowrap;
-    flex-wrap:nowrap;
+  flex-wrap: nowrap;
 }
 
 .horizontal-scrollable > .row > .col {
   display: inline-block;
   float: none;
-
 }
 </style>

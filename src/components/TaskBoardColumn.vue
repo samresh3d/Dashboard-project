@@ -12,11 +12,22 @@
           v-for="element in initialArray"
           :key="element.task"
         >
-          <span>{{ element.task }}</span> <b-button class="ml-2 btn btn-light" type="button" varient="primary" @click="add"><b-icon icon="pencil"></b-icon></b-button>
+          <span  v-b-tooltip.hover :title="element.description">{{ element.task }}</span>
+          <b-button
+            class="ml-2 btn btn-light"
+            type="button"
+            varient="primary"
+            @click="updateTask(element)"
+            ><b-icon icon="pencil"></b-icon
+          ></b-button>
         </div>
       </draggable>
-      <div class="form-inline add-task-input-wrapper ">
-        <b-form-input v-model="newTask" placeholder="Add Task... ⏎" @keyup.enter="add"></b-form-input>
+      <div class="form-inline add-task-input-wrapper">
+        <b-form-input
+          v-model="newTask"
+          placeholder="Add Task... ⏎"
+          @keyup.enter="add"
+        ></b-form-input>
       </div>
     </div>
   </div>
@@ -34,6 +45,7 @@ export default {
     heading: String,
     initialArray: Array,
     alertClass: String,
+    edit:Function,
   },
   data() {
     return {
@@ -45,9 +57,12 @@ export default {
   methods: {
     add() {
       if (this.newTask) {
-        this.taskArray.push({ task: this.newTask });
+        this.taskArray.push({ task: this.newTask, description: "Add Task Description!" });
         this.newTask = "";
       }
+    },
+    updateTask(element) {
+      this.edit(element);
     },
   },
 };
@@ -57,10 +72,10 @@ export default {
 .kanban-column {
   min-height: 200px;
   min-width: 200px;
-    max-width: 350px;
+  max-width: 350px;
 }
 
-.form-inline .form-control{
+.form-inline .form-control {
   width: 100% !important;
 }
 </style>
